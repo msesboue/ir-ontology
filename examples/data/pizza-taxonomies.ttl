@@ -1,0 +1,316 @@
+@prefix : <http://www.msesboue.org/o/ir-onto-pizza-demo#> .
+@prefix ir-onto: <http://www.msesboue.org/o/ir-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@base <http://www.msesboue.org/o/ir-onto> .
+
+#################################################################
+#    Classes
+#################################################################
+
+
+:American rdf:type owl:NamedIndividual ;
+               ir-onto:hasSupercategory :NamedPizza .
+
+:AmericanHot rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :NamedPizza .
+
+:AnchoviesTopping rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :FishTopping .
+
+:ArtichokeTopping rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :VegetableTopping .
+
+:AsparagusTopping rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :VegetableTopping .
+
+:Cajun rdf:type owl:NamedIndividual ;
+            ir-onto:hasSupercategory :NamedPizza .
+
+:CajunSpiceTopping rdf:type owl:NamedIndividual ;
+                        ir-onto:hasSupercategory :HerbSpiceTopping .
+
+:CaperTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :VegetableTopping .
+
+:Capricciosa rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :NamedPizza .
+
+:Caprina rdf:type owl:NamedIndividual ;
+              ir-onto:hasSupercategory :NamedPizza .
+
+:CheeseTopping rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :PizzaTopping .
+
+:CheeseyPizza rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :Pizza .
+
+:CheeseyVegetableTopping rdf:type owl:NamedIndividual ;
+                              ir-onto:hasSupercategory :CheeseTopping ,
+                                              :VegetableTopping .
+
+:ChickenTopping rdf:type owl:NamedIndividual ;
+                     ir-onto:hasSupercategory :MeatTopping .
+
+:Country rdf:type owl:NamedIndividual ;
+              ir-onto:hasSupercategory :DomainConcept .
+
+:DeepPanBase rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :PizzaBase .
+
+:DomainConcept rdf:type owl:NamedIndividual ;
+                    owl:disjointWith :ValuePartition .
+
+:Fiorentina rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :NamedPizza .
+
+:FishTopping rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :PizzaTopping .
+
+:Food rdf:type owl:NamedIndividual ;
+           ir-onto:hasSupercategory :DomainConcept .
+
+:FourCheesesTopping rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :CheeseTopping .
+
+:FourSeasons rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :NamedPizza .
+
+:FruitTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :PizzaTopping .
+
+:FruttiDiMare rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :NamedPizza .
+
+:GarlicTopping rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :VegetableTopping .
+
+:Giardiniera rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :NamedPizza .
+
+:GoatsCheeseTopping rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :CheeseTopping .
+
+:GorgonzolaTopping rdf:type owl:NamedIndividual ;
+                        ir-onto:hasSupercategory :CheeseTopping .
+
+:GreenPepperTopping rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :PepperTopping .
+
+:HamTopping rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :MeatTopping .
+
+:HerbSpiceTopping rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :PizzaTopping .
+
+:Hot rdf:type owl:NamedIndividual ;
+          ir-onto:hasSupercategory :Spiciness .
+
+:HotGreenPepperTopping rdf:type owl:NamedIndividual ;
+                            ir-onto:hasSupercategory :GreenPepperTopping .
+
+:HotSpicedBeefTopping rdf:type owl:NamedIndividual ;
+                           ir-onto:hasSupercategory :MeatTopping .
+
+:IceCream rdf:type owl:NamedIndividual ;
+               ir-onto:hasSupercategory :Food .
+
+:InterestingPizza rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :Pizza .
+
+:JalapenoPepperTopping rdf:type owl:NamedIndividual ;
+                            ir-onto:hasSupercategory :PepperTopping .
+
+:LaReine rdf:type owl:NamedIndividual ;
+              ir-onto:hasSupercategory :NamedPizza .
+
+:LeekTopping rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :VegetableTopping .
+
+:Margherita rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :NamedPizza .
+
+:MeatTopping rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :PizzaTopping .
+
+:MeatyPizza rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :Pizza .
+
+:Medium rdf:type owl:NamedIndividual ;
+             ir-onto:hasSupercategory :Spiciness .
+
+:Mild rdf:type owl:NamedIndividual ;
+           ir-onto:hasSupercategory :Spiciness .
+
+:MixedSeafoodTopping rdf:type owl:NamedIndividual ;
+                          ir-onto:hasSupercategory :FishTopping .
+
+:MozzarellaTopping rdf:type owl:NamedIndividual ;
+                        ir-onto:hasSupercategory :CheeseTopping .
+
+:Mushroom rdf:type owl:NamedIndividual ;
+               ir-onto:hasSupercategory :NamedPizza .
+
+:MushroomTopping rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :VegetableTopping .
+
+:NamedPizza rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :Pizza .
+
+:Napoletana rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :NamedPizza .
+
+:NonVegetarianPizza rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :Pizza .
+
+:NutTopping rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :PizzaTopping .
+
+:OliveTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :VegetableTopping .
+
+:OnionTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :VegetableTopping .
+
+:ParmaHamTopping rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :HamTopping .
+
+:Parmense rdf:type owl:NamedIndividual ;
+               ir-onto:hasSupercategory :NamedPizza .
+
+:ParmesanTopping rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :CheeseTopping .
+
+:PeperonataTopping rdf:type owl:NamedIndividual ;
+                        ir-onto:hasSupercategory :PepperTopping .
+
+:PeperoniSausageTopping rdf:type owl:NamedIndividual ;
+                             ir-onto:hasSupercategory :MeatTopping .
+
+:PepperTopping rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :VegetableTopping .
+
+:PetitPoisTopping rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :VegetableTopping .
+
+:PineKernels rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :NutTopping .
+
+:Pizza rdf:type owl:NamedIndividual ;
+            ir-onto:hasSupercategory :Food .
+
+:PizzaBase rdf:type owl:NamedIndividual ;
+                ir-onto:hasSupercategory :Food .
+
+:PizzaTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :Food .
+
+:PolloAdAstra rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :NamedPizza .
+
+:PrawnsTopping rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :FishTopping .
+
+:PrinceCarlo rdf:type owl:NamedIndividual ;
+                  ir-onto:hasSupercategory :NamedPizza .
+
+:QuattroFormaggi rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :NamedPizza .
+
+:RealItalianPizza rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :Pizza .
+
+:RedOnionTopping rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :OnionTopping .
+
+:RocketTopping rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :VegetableTopping .
+
+:Rosa rdf:type owl:NamedIndividual ;
+           ir-onto:hasSupercategory :NamedPizza .
+
+:RosemaryTopping rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :HerbSpiceTopping .
+
+:SauceTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :PizzaTopping .
+
+:Siciliana rdf:type owl:NamedIndividual ;
+                ir-onto:hasSupercategory :NamedPizza .
+
+:SlicedTomatoTopping rdf:type owl:NamedIndividual ;
+                          ir-onto:hasSupercategory :TomatoTopping .
+
+:SloppyGiuseppe rdf:type owl:NamedIndividual ;
+                     ir-onto:hasSupercategory :NamedPizza .
+
+:Soho rdf:type owl:NamedIndividual ;
+           ir-onto:hasSupercategory :NamedPizza .
+
+:Spiciness rdf:type owl:NamedIndividual ;
+                ir-onto:hasSupercategory :ValuePartition .
+
+:SpicyPizza rdf:type owl:NamedIndividual ;
+                 ir-onto:hasSupercategory :Pizza .
+
+:SpicyPizzaEquivalent rdf:type owl:NamedIndividual ;
+                           ir-onto:hasSupercategory :Pizza .
+
+:SpicyTopping rdf:type owl:NamedIndividual ;
+                   ir-onto:hasSupercategory :PizzaTopping .
+
+:SpinachTopping rdf:type owl:NamedIndividual ;
+                     ir-onto:hasSupercategory :VegetableTopping .
+
+:SultanaTopping rdf:type owl:NamedIndividual ;
+                     ir-onto:hasSupercategory :FruitTopping .
+
+:SundriedTomatoTopping rdf:type owl:NamedIndividual ;
+                            ir-onto:hasSupercategory :TomatoTopping .
+
+:SweetPepperTopping rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :PepperTopping .
+
+:ThinAndCrispyBase rdf:type owl:NamedIndividual ;
+                        ir-onto:hasSupercategory :PizzaBase .
+
+:ThinAndCrispyPizza rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :Pizza .
+
+:TobascoPepperSauce rdf:type owl:NamedIndividual ;
+                         ir-onto:hasSupercategory :SauceTopping .
+
+:TomatoTopping rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :VegetableTopping .
+
+:UnclosedPizza rdf:type owl:NamedIndividual ;
+                    ir-onto:hasSupercategory :Pizza .
+
+:ValuePartition rdf:type owl:NamedIndividual .
+
+:VegetableTopping rdf:type owl:NamedIndividual ;
+                       ir-onto:hasSupercategory :PizzaTopping .
+
+:VegetarianPizza rdf:type owl:NamedIndividual ;
+                      ir-onto:hasSupercategory :Pizza .
+
+:VegetarianTopping rdf:type owl:NamedIndividual ;
+                        ir-onto:hasSupercategory :PizzaTopping .
+
+:Veneziana rdf:type owl:NamedIndividual ;
+                ir-onto:hasSupercategory :NamedPizza .
+
+:America rdf:type owl:NamedIndividual ;
+         ir-onto:hasSupercategory :Country .
+
+:England rdf:type owl:NamedIndividual ;
+         ir-onto:hasSupercategory :Country .
+
+:France rdf:type owl:NamedIndividual ;
+         ir-onto:hasSupercategory :Country .
+
+:Germany rdf:type owl:NamedIndividual ;
+         ir-onto:hasSupercategory :Country .
+
+:Italy rdf:type owl:NamedIndividual ;
+         ir-onto:hasSupercategory :Country .
