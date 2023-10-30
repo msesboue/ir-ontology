@@ -8,7 +8,8 @@
 @base <http://www.msesboue.org/o/ir-onto-pizza-demo#> .
 
 <http://www.msesboue.org/o/ir-onto-pizza-demo#> rdf:type owl:Ontology ;
-                                                 owl:versionIRI <http://www.msesboue.org/o/ir-onto-pizza-demo/1.0.0> .
+                                                 owl:versionIRI <http://www.msesboue.org/o/ir-onto-pizza-demo/1.0.0> ;
+                                                 owl:imports <http://www.msesboue.org/o/information-retrieval-ontology> .
 
 #################################################################
 #    Object Properties
@@ -20,23 +21,32 @@
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasCountryOfOrigin
-:hasCountryOfOrigin rdf:type owl:ObjectProperty .
+:hasCountryOfOrigin rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf ir-onto:categorizedBy .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasIngredient
-:hasIngredient rdf:type owl:ObjectProperty .
+:hasIngredient rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf ir-onto:categorizedBy .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasPizzaKind
+:hasPizzaKind rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf ir-onto:categorizedBy .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasSpiciness
-:hasSpiciness rdf:type owl:ObjectProperty .
+:hasSpiciness rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf ir-onto:categorizedBy .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasTopping
 :hasTopping rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf :hasIngredient .
 
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasPizzaKind
-:hasPizzaKind rdf:type owl:ObjectProperty .
+
+###  http://www.msesboue.org/o/ir-ontology#hasSubcategory
+ir-onto:hasSubcategory rdfs:subPropertyOf ir-onto:enablesCategory .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#hasSupercategory
@@ -52,23 +62,28 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#Pizza
-:Pizza rdf:type owl:Class .
+:Pizza rdf:type owl:Class ;
+       rdfs:subClassOf ir-onto:Document .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaBase
-:PizzaBase rdf:type owl:Class .
+:PizzaBase rdf:type owl:Class ;
+           rdfs:subClassOf ir-onto:Category .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaKind
-:PizzaKind rdf:type owl:Class .
+:PizzaKind rdf:type owl:Class ;
+           rdfs:subClassOf ir-onto:Category .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaTopping
-:PizzaTopping rdf:type owl:Class .
+:PizzaTopping rdf:type owl:Class ;
+              rdfs:subClassOf ir-onto:Category .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#Spiciness
-:Spiciness rdf:type owl:Class .
+:Spiciness rdf:type owl:Class ;
+           rdfs:subClassOf ir-onto:Category .
 
 
 #################################################################
@@ -84,6 +99,30 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_america
 :_america rdf:type owl:NamedIndividual ,
                    :Country .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_american
+:_american rdf:type owl:NamedIndividual ,
+                    :Pizza ;
+           :hasCountryOfOrigin :_america ;
+           :hasPizzaKind :_cheesyPizza ,
+                         :_meatyPizza ;
+           :hasTopping :_mozzarellaTopping ,
+                       :_peperoniSausageTopping ,
+                       :_tomatoTopping .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_americanHot
+:_americanHot rdf:type owl:NamedIndividual ,
+                       :Pizza ;
+              :hasCountryOfOrigin :_america ;
+              :hasPizzaKind :_cheesyPizza ,
+                            :_meatyPizza ,
+                            :_spicyPizza ;
+              :hasTopping :_mozzarellaTopping ,
+                          :_peperoniSausageTopping ,
+                          :_tomatoTopping .
+
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_anchoviesTopping
 :_anchoviesTopping rdf:type owl:NamedIndividual ,
@@ -103,6 +142,19 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
                    ir-onto:hasSupercategory :_vegetableTopping .
 
 
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cajun
+:_cajun rdf:type owl:NamedIndividual ,
+                 :Pizza ;
+        :hasPizzaKind :_cheesyPizza ,
+                      :_nonVegetarianPizza ,
+                      :_spicyPizza ;
+        :hasTopping :_mozzarellaTopping ,
+                    :_peperoniSausageTopping ,
+                    :_prawnsTopping ,
+                    :_tobascoPepperSauceTopping ,
+                    :_tomatoTopping .
+
+
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cajunSpiceTopping
 :_cajunSpiceTopping rdf:type owl:NamedIndividual ,
                              :PizzaTopping ;
@@ -118,6 +170,7 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cheeseTopping
 :_cheeseTopping rdf:type owl:NamedIndividual ,
                          :PizzaTopping .
+
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cheesyPizza
 :_cheesyPizza rdf:type owl:NamedIndividual ,
@@ -174,11 +227,6 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_goatsCheeseTopping
 :_goatsCheeseTopping rdf:type owl:NamedIndividual ,
-                              :PizzaTopping ;
-                     ir-onto:hasSupercategory :_cheeseTopping .
-
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#_mozzarellaTopping
-:_mozzarellaTopping rdf:type owl:NamedIndividual ,
                               :PizzaTopping ;
                      ir-onto:hasSupercategory :_cheeseTopping .
 
@@ -264,6 +312,12 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 :_mixedSeafoodTopping rdf:type owl:NamedIndividual ,
                                :PizzaTopping ;
                       ir-onto:hasSupercategory :_seafoodTopping .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_mozzarellaTopping
+:_mozzarellaTopping rdf:type owl:NamedIndividual ,
+                             :PizzaTopping ;
+                    ir-onto:hasSupercategory :_cheeseTopping .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_mushroomTopping
@@ -441,6 +495,13 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
                          :PizzaKind .
 
 
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_userSearch
+:_userSearch rdf:type owl:NamedIndividual ,
+                      ir-onto:SearchContext ;
+             ir-onto:hasContextCategory :_cheeseTopping ,
+                                        :_spicyPizza .
+
+
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetableTopping
 :_vegetableTopping rdf:type owl:NamedIndividual ,
                             :PizzaTopping .
@@ -454,45 +515,6 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianTopping
 :_vegetarianTopping rdf:type owl:NamedIndividual ,
                              :PizzaTopping .
-
-
-
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#_american
-:_american rdf:type owl:NamedIndividual ,
-                    :Pizza .
-
-:_american :hasCountryOfOrigin :_america ;
-            :hasTopping :_mozzarellaTopping, 
-                        :_peperoniSausageTopping, 
-                        :_tomatoTopping .
-
-:_american :hasPizzaKind :_cheesyPizza, 
-                        :_meatyPizza .
-
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#_americanHot
-:_americanHot rdf:type owl:NamedIndividual ,
-                    :Pizza .
-
-:_americanHot :hasCountryOfOrigin :_america ;
-            :hasTopping :_mozzarellaTopping, 
-                        :_peperoniSausageTopping, 
-                        :_tomatoTopping .
-
-:_americanHot :hasPizzaKind :_cheesyPizza, :_meatyPizza, :_spicyPizza .
-
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cajun
-:_cajun rdf:type owl:NamedIndividual ,
-                 :Pizza .
-
-:_cajun :hasTopping :_mozzarellaTopping, 
-                        :_peperoniSausageTopping, 
-                        :_tomatoTopping,
-                        :_prawnsTopping,
-                        :_tobascoPepperSauceTopping . 
-
-:_cajun :hasPizzaKind :_cheesyPizza, :_nonVegetarianPizza, :_spicyPizza .
-
-
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
