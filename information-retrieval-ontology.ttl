@@ -4,13 +4,18 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.msesboue.org/o/ir-ontology> .
+@base <http://www.msesboue.org/o/ir-ontology#> .
 
 <http://www.msesboue.org/o/information-retrieval-ontology> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:range :Category .
+
 
 ###  http://www.msesboue.org/o/ir-ontology#categorizedBy
 :categorizedBy rdf:type owl:ObjectProperty ;
@@ -28,15 +33,11 @@
                  rdfs:range :Category .
 
 
-###  http://www.msesboue.org/o/ir-ontology#hasContextCategory
-:hasContextCategory rdf:type owl:ObjectProperty ;
-                    rdfs:domain :SearchContext ;
-                    rdfs:range :Category .
-
-
 ###  http://www.msesboue.org/o/ir-ontology#hasSubcategory
 :hasSubcategory rdf:type owl:ObjectProperty ;
-                owl:inverseOf :hasSupercategory .
+                owl:inverseOf :hasSupercategory ;
+                rdfs:domain :Category ;
+                rdfs:range :Category .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#hasSupercategory
@@ -50,6 +51,19 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#IncompatibleSearch
+<http://www.msesboue.org/o/ir-onto-pizza-demo#IncompatibleSearch> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.msesboue.org/o/ir-onto-pizza-demo#Search> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#Search
+<http://www.msesboue.org/o/ir-onto-pizza-demo#Search> rdf:type owl:Class ;
+                                                      owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory> ;
+                                                                            owl:someValuesFrom :Category
+                                                                          ] .
+
 
 ###  http://www.msesboue.org/o/ir-ontology#CandidateDocument
 :CandidateDocument rdf:type owl:Class ;
@@ -88,8 +102,9 @@
 
 ###  http://www.msesboue.org/o/ir-ontology#SearchContext
 :SearchContext rdf:type owl:Class ;
-               rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                 owl:onProperty :hasContextCategory ;
+               rdfs:subClassOf <http://www.msesboue.org/o/ir-onto-pizza-demo#Search> ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory> ;
                                  owl:allValuesFrom :SelectedCategory
                                ] .
 

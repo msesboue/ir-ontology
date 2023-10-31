@@ -35,6 +35,11 @@
               rdfs:subPropertyOf ir-onto:categorizedBy .
 
 
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory
+:hasSearchCategory rdf:type owl:ObjectProperty ;
+                   rdfs:range ir-onto:Category .
+
+
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasSpiciness
 :hasSpiciness rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf ir-onto:categorizedBy .
@@ -61,6 +66,11 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 :Country rdf:type owl:Class .
 
 
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#IncompatibleSearch
+:IncompatibleSearch rdf:type owl:Class ;
+                    rdfs:subClassOf :Search .
+
+
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#Pizza
 :Pizza rdf:type owl:Class ;
        rdfs:subClassOf ir-onto:Document .
@@ -81,9 +91,53 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
               rdfs:subClassOf ir-onto:Category .
 
 
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#Search
+:Search rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSearchCategory ;
+                              owl:someValuesFrom ir-onto:Category
+                            ] .
+
+
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#Spiciness
 :Spiciness rdf:type owl:Class ;
            rdfs:subClassOf ir-onto:Category .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#VeggyMeatyPizza
+:VeggyMeatyPizza rdf:type owl:Class ;
+                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ir-onto:categorizedBy ;
+                                                              owl:hasValue :_meatyPizza
+                                                            ]
+                                                            [ rdf:type owl:Restriction ;
+                                                              owl:onProperty ir-onto:categorizedBy ;
+                                                              owl:hasValue :_vegetarianPizza
+                                                            ]
+                                                          ) ;
+                                       rdf:type owl:Class
+                                     ] ;
+                 rdfs:subClassOf ir-onto:IncompatibleDocument .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#VeggyMeatySearch
+:VeggyMeatySearch rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasSearchCategory ;
+                                                               owl:hasValue :_meatyPizza
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasSearchCategory ;
+                                                               owl:hasValue :_vegetarianPizza
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  rdfs:subClassOf :IncompatibleSearch .
+
+
+###  http://www.msesboue.org/o/ir-ontology#SearchContext
+ir-onto:SearchContext rdfs:subClassOf :Search .
 
 
 #################################################################
@@ -269,6 +323,12 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 :_hotSpicedBeefTopping rdf:type owl:NamedIndividual ,
                                 :PizzaTopping ;
                        ir-onto:hasSupercategory :_meatTopping .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_impossibleSearch
+:_impossibleSearch rdf:type owl:NamedIndividual ;
+                   :hasSearchCategory :_meatyPizza ,
+                                      :_vegetarianPizza .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_italy
@@ -498,8 +558,8 @@ ir-onto:hasSupercategory rdf:type owl:ObjectProperty .
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_userSearch
 :_userSearch rdf:type owl:NamedIndividual ,
                       ir-onto:SearchContext ;
-             ir-onto:hasContextCategory :_cheeseTopping ,
-                                        :_spicyPizza .
+             :hasSearchCategory :_cheeseTopping ,
+                                :_spicyPizza .
 
 
 ###  http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetableTopping
