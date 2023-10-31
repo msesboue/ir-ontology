@@ -12,8 +12,8 @@
 #    Object Properties
 #################################################################
 
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory
-<http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory> rdf:type owl:ObjectProperty ;
+###  http://www.msesboue.org/o/ir-ontology#hasSearchCategory
+:hasSearchCategory rdf:type owl:ObjectProperty ;
                                                                  rdfs:range :Category .
 
 
@@ -52,15 +52,15 @@
 #    Classes
 #################################################################
 
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#IncompatibleSearch
-<http://www.msesboue.org/o/ir-onto-pizza-demo#IncompatibleSearch> rdf:type owl:Class ;
-                                                                  rdfs:subClassOf <http://www.msesboue.org/o/ir-onto-pizza-demo#Search> .
+###  http://www.msesboue.org/o/ir-ontology#IncompatibleSearch
+:IncompatibleSearch rdf:type owl:Class ;
+                                                                  rdfs:subClassOf :Search .
 
 
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#Search
-<http://www.msesboue.org/o/ir-onto-pizza-demo#Search> rdf:type owl:Class ;
+###  http://www.msesboue.org/o/ir-ontology#Search
+:Search rdf:type owl:Class ;
                                                       owl:equivalentClass [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty <http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory> ;
+                                                                            owl:onProperty :hasSearchCategory ;
                                                                             owl:someValuesFrom :Category
                                                                           ] .
 
@@ -102,9 +102,9 @@
 
 ###  http://www.msesboue.org/o/ir-ontology#SearchContext
 :SearchContext rdf:type owl:Class ;
-               rdfs:subClassOf <http://www.msesboue.org/o/ir-onto-pizza-demo#Search> ,
+               rdfs:subClassOf :Search ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty <http://www.msesboue.org/o/ir-onto-pizza-demo#hasSearchCategory> ;
+                                 owl:onProperty :hasSearchCategory ;
                                  owl:allValuesFrom :SelectedCategory
                                ] .
 
