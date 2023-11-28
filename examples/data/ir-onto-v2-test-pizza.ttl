@@ -1,0 +1,436 @@
+@prefix : <http://www.msesboue.org/o/ir-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.msesboue.org/o/ir-ontology#> .
+
+<http://www.msesboue.org/o/information-retrieval-ontology> rdf:type owl:Ontology ;
+                                                            owl:imports <http://www.msesboue.org/o/ir-onto-pizza-demo/1.0.0> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasCountryOfOrigin
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasCountryOfOrigin> rdfs:subPropertyOf :categorizedBy .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasIngredient
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasIngredient> rdfs:subPropertyOf :categorizedBy .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasPizzaKind
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasPizzaKind> rdfs:subPropertyOf :categorizedBy .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasSpiciness
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasSpiciness> rdfs:subPropertyOf :categorizedBy .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#makesIt
+<http://www.msesboue.org/o/ir-onto-pizza-demo#makesIt> rdfs:subPropertyOf :enablesCategory .
+
+
+###  http://www.msesboue.org/o/ir-ontology#categorizedBy
+:categorizedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :categorizes ;
+               rdfs:range :Category .
+
+
+###  http://www.msesboue.org/o/ir-ontology#categorizes
+:categorizes rdf:type owl:ObjectProperty .
+
+
+###  http://www.msesboue.org/o/ir-ontology#enablesCategory
+:enablesCategory rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Category ;
+                 rdfs:range :Category .
+
+
+###  http://www.msesboue.org/o/ir-ontology#hasSearchCategory
+:hasSearchCategory rdf:type owl:ObjectProperty ;
+                   rdfs:range :Category .
+
+
+###  http://www.msesboue.org/o/ir-ontology#hasSubcategory
+:hasSubcategory rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :enablesCategory ;
+                owl:inverseOf :hasSupercategory ;
+                rdfs:domain :Category ;
+                rdfs:range :Category .
+
+
+###  http://www.msesboue.org/o/ir-ontology#hasSupercategory
+:hasSupercategory rdf:type owl:ObjectProperty .
+
+
+###  http://www.msesboue.org/o/ir-ontology#isMemberOf
+:isMemberOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaTopping> ;
+                                                           owl:disjointWith <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#MeatyVeggieSearch
+<http://www.msesboue.org/o/ir-onto-pizza-demo#MeatyVeggieSearch> rdf:type owl:Class ;
+                                                                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty :hasSearchCategory ;
+                                                                                                              owl:someValuesFrom <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping>
+                                                                                                            ]
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty :hasSearchCategory ;
+                                                                                                              owl:hasValue <http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianPizza>
+                                                                                                            ]
+                                                                                                          ) ;
+                                                                                       rdf:type owl:Class
+                                                                                     ] ;
+                                                                 rdfs:subClassOf :IncompatibleSearch .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#MeatyVeggiesPizza
+<http://www.msesboue.org/o/ir-onto-pizza-demo#MeatyVeggiesPizza> rdf:type owl:Class ;
+                                                                 owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty :categorizedBy ;
+                                                                                                              owl:someValuesFrom <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping>
+                                                                                                            ]
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty :categorizedBy ;
+                                                                                                              owl:hasValue <http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianPizza>
+                                                                                                            ]
+                                                                                                          ) ;
+                                                                                       rdf:type owl:Class
+                                                                                     ] ;
+                                                                 rdfs:subClassOf :IncompatibleDocument .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#Pizza
+<http://www.msesboue.org/o/ir-onto-pizza-demo#Pizza> rdfs:subClassOf :Document .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaBase
+<http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaBase> rdfs:subClassOf :Category .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaKind
+<http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaKind> rdfs:subClassOf :Category .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaTopping> rdfs:subClassOf :Category .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#Spiciness
+<http://www.msesboue.org/o/ir-onto-pizza-demo#Spiciness> rdfs:subClassOf :Category .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.msesboue.org/o/ir-onto-pizza-demo#PizzaTopping> .
+
+
+###  http://www.msesboue.org/o/ir-ontology#CandidateDocument
+:CandidateDocument rdf:type owl:Class ;
+                   rdfs:subClassOf :Document .
+
+
+###  http://www.msesboue.org/o/ir-ontology#Category
+:Category rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :isMemberOf ;
+                            owl:someValuesFrom :Classification
+                          ] .
+
+
+###  http://www.msesboue.org/o/ir-ontology#Classification
+:Classification rdf:type owl:Class .
+
+
+###  http://www.msesboue.org/o/ir-ontology#Document
+:Document rdf:type owl:Class .
+
+
+###  http://www.msesboue.org/o/ir-ontology#EnabledCategory
+:EnabledCategory rdf:type owl:Class ;
+                 rdfs:subClassOf :Category ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :categorizes ;
+                                   owl:allValuesFrom :CandidateDocument
+                                 ] .
+
+
+###  http://www.msesboue.org/o/ir-ontology#IncompatibleDocument
+:IncompatibleDocument rdf:type owl:Class ;
+                      rdfs:subClassOf :Document .
+
+
+###  http://www.msesboue.org/o/ir-ontology#IncompatibleSearch
+:IncompatibleSearch rdf:type owl:Class ;
+                    rdfs:subClassOf :Search .
+
+
+###  http://www.msesboue.org/o/ir-ontology#Search
+:Search rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSearchCategory ;
+                              owl:someValuesFrom :Category
+                            ] .
+
+
+###  http://www.msesboue.org/o/ir-ontology#SearchContext
+:SearchContext rdf:type owl:Class ;
+               rdfs:subClassOf :Search ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasSearchCategory ;
+                                 owl:allValuesFrom :SelectedCategory
+                               ] .
+
+
+###  http://www.msesboue.org/o/ir-ontology#SelectedCategory
+:SelectedCategory rdf:type owl:Class ;
+                  rdfs:subClassOf :Category ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :categorizes ;
+                                    owl:allValuesFrom :CandidateDocument
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :enablesCategory ;
+                                    owl:allValuesFrom :EnabledCategory
+                                  ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_anchoviesTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_anchoviesTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_artichokeTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_artichokeTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_asparagusTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_asparagusTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cajunSpiceTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_cajunSpiceTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_caperTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_caperTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_cheeseTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_cheeseTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_chickenTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_chickenTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_fourCheesesTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_fourCheesesTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_fruitTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_fruitTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_garlicTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_garlicTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_goatsCheeseTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_goatsCheeseTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_gorgonzolaTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_gorgonzolaTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_greenPepperTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_greenPepperTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_hamTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_hamTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_hamToppingSearch
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_hamToppingSearch> rdf:type owl:NamedIndividual ,
+                                                                          :Search ;
+                                                                 :hasSearchCategory <http://www.msesboue.org/o/ir-onto-pizza-demo#_hamTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_herbSpiceTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_herbSpiceTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_hotGreenPepperTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_hotGreenPepperTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_hotSpicedBeefTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_hotSpicedBeefTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_impossiblePizza
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_impossiblePizza> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.msesboue.org/o/ir-onto-pizza-demo#Pizza> ;
+                                                                <http://www.msesboue.org/o/ir-onto-pizza-demo#hasPizzaKind> <http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianPizza> ;
+                                                                <http://www.msesboue.org/o/ir-onto-pizza-demo#hasTopping> <http://www.msesboue.org/o/ir-onto-pizza-demo#_hamTopping> ,
+                                                                                                                          <http://www.msesboue.org/o/ir-onto-pizza-demo#_mushroomTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_jalapenoPepperTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_jalapenoPepperTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_leekTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_leekTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_meatTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_meatTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_meatyToppingSearch
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_meatyToppingSearch> rdf:type owl:NamedIndividual ,
+                                                                            :Search ;
+                                                                   :hasSearchCategory <http://www.msesboue.org/o/ir-onto-pizza-demo#_meatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_meatyVeggieSearch
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_meatyVeggieSearch> rdf:type owl:NamedIndividual ,
+                                                                           :Search ;
+                                                                  :hasSearchCategory <http://www.msesboue.org/o/ir-onto-pizza-demo#_meatTopping> ,
+                                                                                     <http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianPizza> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_meatyVeggieSearch_1
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_meatyVeggieSearch_1> rdf:type owl:NamedIndividual ,
+                                                                             :Search ;
+                                                                    :hasSearchCategory <http://www.msesboue.org/o/ir-onto-pizza-demo#_hamTopping> ,
+                                                                                       <http://www.msesboue.org/o/ir-onto-pizza-demo#_onionTopping> ,
+                                                                                       <http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianPizza> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_mixedSeafoodTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_mixedSeafoodTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_mozzarellaTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_mozzarellaTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_mushroomTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_mushroomTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_nutTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_nutTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_oliveTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_oliveTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_onionMushroomToppingSearch
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_onionMushroomToppingSearch> rdf:type owl:NamedIndividual ,
+                                                                                    :Search ;
+                                                                           :hasSearchCategory <http://www.msesboue.org/o/ir-onto-pizza-demo#_mushroomTopping> ,
+                                                                                              <http://www.msesboue.org/o/ir-onto-pizza-demo#_onionTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_onionTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_onionTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_parmaHamTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_parmaHamTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_parmesanTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_parmesanTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_peperonataTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_peperonataTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_peperoniSausageTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_peperoniSausageTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_pepperTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_pepperTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_petitPoisTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_petitPoisTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_pineKernelTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_pineKernelTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_prawnsTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_prawnsTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_redOnionTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_redOnionTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_rocketTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_rocketTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_seafoodTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_seafoodTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#MeatTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_slicedTomatoTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_slicedTomatoTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_spinachTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_spinachTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_sundriedTomatoTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_sundriedTomatoTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_sweetPepperTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_sweetPepperTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_tobascoPepperSauceTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_tobascoPepperSauceTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_tomatoTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_tomatoTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetableTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetableTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianTopping
+<http://www.msesboue.org/o/ir-onto-pizza-demo#_vegetarianTopping> rdf:type <http://www.msesboue.org/o/ir-onto-pizza-demo#VegetarianTopping> .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

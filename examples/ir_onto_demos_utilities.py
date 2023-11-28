@@ -1,8 +1,11 @@
 import json
-from typing import Dict, Optional, Tuple
+from typing import Dict, Optional, Set, Tuple
 
-from rdflib import Graph
+from rdflib import Graph, URIRef
 from rdflib.namespace import NamespaceManager
+
+import networkx as nx
+import matplotlib.pyplot as plt
 
 import requests
 
@@ -136,3 +139,40 @@ def delete_graph(graph: Graph, db_url: str, repo_id: str) -> None:
         print(f"HTTP response body: {query_resp.text}")
     else:
         print("OK")
+
+def end_uri_to_label(end_uri: str) -> str:
+    label = end_uri[1].upper()
+    for l in end_uri[2:]:
+        if l.isupper():
+            label += " "
+        
+        label += l
+
+    return label
+
+def show_graph_portion(subject_uris: Set[URIRef], graph: Graph) -> None:
+    nx_graph = nx.Graph()
+
+    for uri in subject_uris:
+        query = f"""
+            SELECT ?p ?o
+            WHERE {{
+                <{uri}> ?p ?o .
+            }}
+        """
+
+        s = end_uri_to_label(uri.partition("#")[2])
+
+        for r in graph.query(query):
+            p = r["p"].partition("#")[2]
+            o = end_uri_to_label(r["o"].partition("#")[2])
+            nx_graph.add_node(s)
+            nx_graph.add_node(o)
+            nx_graph.add_edge(s, o, label=p)
+
+    # Visualize the graph using Matplotlib
+    pos = nx.spring_layout(nx_graph)
+    labels = nx.get_edge_attributes(nx_graph, 'label')
+    nx.draw(nx_graph, pos, with_labels=True, node_size=700, node_color="skyblue", font_size=8)
+    nx.draw_networkx_edge_labels(nx_graph, pos, edge_labels=labels)
+    plt.show()
