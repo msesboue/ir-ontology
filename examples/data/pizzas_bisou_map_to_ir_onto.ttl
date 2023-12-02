@@ -3,62 +3,58 @@
 @prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-ir-onto:hasSubcategory a owl:TransitiveProperty ;
-    rdfs:subPropertyOf ir-onto:enablesCategory .
-
 ir-onto:has_base rdfs:subPropertyOf ir-onto:categorizedBy .
 
 ir-onto:has_kind rdfs:subPropertyOf ir-onto:categorizedBy .
 
 ir-onto:has_spiciness rdfs:subPropertyOf ir-onto:categorizedBy .
 
+pizza:Spiciness a owl:Class ;
+    rdfs:subClassOf ir-onto:Category .
+
 pizza:_bambino a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_basil a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_basil a owl:NamedIndividual .
 
-pizza:_beetrootCoulis a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_beetrootCoulis a owl:NamedIndividual .
 
 pizza:_biancaCastafiore a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_blackGarlic a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_blackGarlic a owl:NamedIndividual .
 
-pizza:_blackPepper a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_blackPepper a owl:NamedIndividual .
 
 pizza:_blackTruffleCreamBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-pizza:_bresaola a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_bresaola a owl:NamedIndividual .
 
 pizza:_burraTadah a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_carpaccioChampignonDeParis a pizza:PizzaTopping,
+pizza:_carpaccioChampignonDeParis a owl:NamedIndividual .
+
+pizza:_champignonDeParis a owl:NamedIndividual .
+
+pizza:_cheese a owl:NamedIndividual .
+
+pizza:_cheesyPizza a pizza:PizzaKind,
         owl:NamedIndividual .
 
-pizza:_champignonDeParis a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_cherryTomato a owl:NamedIndividual .
 
-pizza:_cherryTomato a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_condiment a owl:NamedIndividual .
 
 pizza:_creamBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-pizza:_fontina a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_fontina a owl:NamedIndividual .
 
-pizza:_fontinaChip a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_fontinaChip a owl:NamedIndividual .
 
-pizza:_goatCheese a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_goatCheese a owl:NamedIndividual .
 
 pizza:_goatCheesePizza a pizza:PizzaKind,
         owl:NamedIndividual .
@@ -66,26 +62,28 @@ pizza:_goatCheesePizza a pizza:PizzaKind,
 pizza:_godSaveTheKing a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_gorgonzola a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_gorgonzola a owl:NamedIndividual .
 
-pizza:_honey a pizza:PizzaTopping,
+pizza:_ham a owl:NamedIndividual .
+
+pizza:_herb a owl:NamedIndividual .
+
+pizza:_honey a owl:NamedIndividual .
+
+pizza:_hot a pizza:PizzaSpiciness,
         owl:NamedIndividual .
 
 pizza:_hotStuff40 a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_jambonDeParisWithBlackTruffle a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_jambonDeParisWithBlackTruffle a owl:NamedIndividual .
 
-pizza:_jambonDeParisWithHerbs a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_jambonDeParisWithHerbs a owl:NamedIndividual .
 
 pizza:_laVieEnRose a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_leek a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_leek a owl:NamedIndividual .
 
 pizza:_leonardo a pizza:Pizza,
         owl:NamedIndividual .
@@ -93,18 +91,27 @@ pizza:_leonardo a pizza:Pizza,
 pizza:_margherita20 a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_medium a pizza:Spiciness,
+pizza:_meat a owl:NamedIndividual .
+
+pizza:_meatyPizza a pizza:PizzaKind,
+        owl:NamedIndividual .
+
+pizza:_medium a pizza:PizzaSpiciness,
+        owl:NamedIndividual .
+
+pizza:_mild a pizza:PizzaSpiciness,
         owl:NamedIndividual .
 
 pizza:_mortadella a pizza:Pizza,
-        pizza:PizzaTopping,
         owl:NamedIndividual .
 
-pizza:_mozzaDiBurrata a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_mozzaDiBurrata a owl:NamedIndividual .
 
-pizza:_mozzaFiorDiLatte a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_mozzaFiorDiLatte a owl:NamedIndividual .
+
+pizza:_mozzarella a owl:NamedIndividual .
+
+pizza:_mushroom a owl:NamedIndividual .
 
 pizza:_mustardCreamBase a pizza:PizzaBase,
         owl:NamedIndividual .
@@ -112,29 +119,37 @@ pizza:_mustardCreamBase a pizza:PizzaBase,
 pizza:_oignonCreamBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-pizza:_olive a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_olive a owl:NamedIndividual .
 
-pizza:_oliveOil a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_oliveOil a owl:NamedIndividual .
+
+pizza:_onion a owl:NamedIndividual .
 
 pizza:_onionSquashCreamBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-pizza:_parmaHam a pizza:PizzaTopping,
+pizza:_parmaHam a owl:NamedIndividual .
+
+pizza:_parmesan a owl:NamedIndividual .
+
+pizza:_parsley a owl:NamedIndividual .
+
+pizza:_pecorino a owl:NamedIndividual .
+
+pizza:_pistachioPesto a owl:NamedIndividual .
+
+pizza:_pizzaBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-pizza:_parmesan a pizza:PizzaTopping,
+pizza:_pizzaKind a pizza:PizzaKind,
         owl:NamedIndividual .
 
-pizza:_parsley a pizza:PizzaTopping,
+pizza:_pizzaSpiciness a pizza:PizzaSpiciness,
         owl:NamedIndividual .
 
-pizza:_pecorino a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_pizzaTopping a owl:NamedIndividual .
 
-pizza:_pistachioPesto a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_pizzaToppings a pizza:PizzaTopping .
 
 pizza:_porkPizza a pizza:PizzaKind,
         owl:NamedIndividual .
@@ -142,41 +157,35 @@ pizza:_porkPizza a pizza:PizzaKind,
 pizza:_quatroFromaggi a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:_redOnion a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_redOnion a owl:NamedIndividual .
 
 pizza:_ricottaCreamBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-pizza:_roastedPistachio a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_roastedPistachio a owl:NamedIndividual .
 
-pizza:_rocket a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_rocket a owl:NamedIndividual .
 
-pizza:_scallion a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_sauce a owl:NamedIndividual .
 
-pizza:_smokedScarmoza a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_scallion a owl:NamedIndividual .
 
-pizza:_speck a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_smokedScarmoza a owl:NamedIndividual .
 
-pizza:_spianataPiccante a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_speck a owl:NamedIndividual .
 
-pizza:_spinach a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_spianataPiccante a owl:NamedIndividual .
 
-pizza:_sweetPepperDrop a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_spinach a owl:NamedIndividual .
 
-pizza:_tarragon a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_sweetPepperDrop a owl:NamedIndividual .
+
+pizza:_tarragon a owl:NamedIndividual .
 
 pizza:_tartufo a pizza:Pizza,
         owl:NamedIndividual .
+
+pizza:_tomato a owl:NamedIndividual .
 
 pizza:_tomatoBase a pizza:PizzaBase,
         owl:NamedIndividual .
@@ -184,11 +193,12 @@ pizza:_tomatoBase a pizza:PizzaBase,
 pizza:_tomatoSauceAlaNdujaBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
+pizza:_vegetable a owl:NamedIndividual .
+
 pizza:_vegetarianPizza a pizza:PizzaKind,
         owl:NamedIndividual .
 
-pizza:_walnut a pizza:PizzaTopping,
-        owl:NamedIndividual .
+pizza:_walnut a owl:NamedIndividual .
 
 pizza:_zucchero a pizza:Pizza,
         owl:NamedIndividual .
@@ -199,9 +209,15 @@ pizza:has_kind a owl:ObjectProperty .
 
 pizza:has_spiciness a owl:ObjectProperty .
 
+pizza:has_subcategory a owl:ObjectProperty ;
+    owl:equivalentProperty ir-onto:hasSubcategory .
+
 pizza:has_topping a owl:ObjectProperty .
 
-pizza:Spiciness a owl:Class ;
+ir-onto:hasSubcategory a owl:TransitiveProperty ;
+    rdfs:subPropertyOf ir-onto:enablesCategory .
+
+pizza:PizzaTopping a owl:Class ;
     rdfs:subClassOf ir-onto:Category .
 
 pizza:PizzaKind a owl:Class ;
@@ -212,7 +228,4 @@ pizza:PizzaBase a owl:Class ;
 
 pizza:Pizza a owl:Class ;
     rdfs:subClassOf ir-onto:Document .
-
-pizza:PizzaTopping a owl:Class ;
-    rdfs:subClassOf ir-onto:Category .
 

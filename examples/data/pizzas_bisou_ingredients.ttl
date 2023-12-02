@@ -1,6 +1,6 @@
 @prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
 
-pizza:_PizzaBase pizza:has_subcategory pizza:_creamBase,
+pizza:_pizzaBase pizza:has_subcategory pizza:_creamBase,
         pizza:_tomatoBase .
 
 pizza:_pizzaKind pizza:has_subcategory pizza:_cheesyPizza,
@@ -69,12 +69,17 @@ pizza:_tomato pizza:has_subcategory pizza:_cherryTomato .
 
 pizza:_tomatoBase pizza:has_subcategory pizza:_tomatoSauceAlaNdujaBase .
 
-pizza:_vegetable pizza:has_subcategory pizza:_carpaccioChampignonDeParis,
-        pizza:_champignonDeParis,
+pizza:_vegetable pizza:has_subcategory pizza:_mushroom,
         pizza:_leek,
         pizza:_olive,
-        pizza:_redOnion,
         pizza:_rocket,
         pizza:_spinach,
         pizza:_tomato .
+
+pizza:_vegetable pizza:has_subcategory pizza:_mushroom .
+pizza:_mushroom pizza:has_subcategory pizza:_champignonDeParis,
+        pizza:_carpaccioChampignonDeParis .
+
+pizza:_vegetable pizza:has_subcategory pizza:_onion .
+pizza:_onion pizza:has_subcategory pizza:_redOnion .
 
