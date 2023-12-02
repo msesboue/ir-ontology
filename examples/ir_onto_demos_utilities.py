@@ -176,3 +176,35 @@ def show_graph_portion(subject_uris: Set[URIRef], graph: Graph) -> None:
     nx.draw(nx_graph, pos, with_labels=True, node_size=700, node_color="skyblue", font_size=8)
     nx.draw_networkx_edge_labels(nx_graph, pos, edge_labels=labels)
     plt.show()
+
+
+## Failed experiment to use the robot CLI for reasoning 
+# reasoner = "hermit" # "ELK"
+
+# error_output = ""
+
+# input_file = "data/temp/pizza_graph_to_infer.ttl"
+# temp_file = "./data/temp/inference_temp.ttl"
+
+# robot_command = [
+#     JAVA_EXE,
+#     "-jar",
+#     ROBOT_JAR,
+#     "reason",
+#     "--reasoner",
+#     reasoner,
+#     "--create-new-ontology",
+#     "true",
+#     # "--annotate-inferred-axioms",
+#     # "true",
+#     "--input",
+#     input_file,
+#     "--output",
+#     temp_file
+# ]
+
+# try:
+#     output = subprocess.check_output(
+#         robot_command, stderr=subprocess.STDOUT)
+# except subprocess.CalledProcessError as e:
+#     error_output = e.output.decode()
