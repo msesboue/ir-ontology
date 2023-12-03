@@ -1,0 +1,90 @@
+@prefix : <http://www.msesboue.org/o/ir-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology .
+
+:IncompatibleDocument a owl:Class ;
+    rdfs:subClassOf :Document .
+
+:IncompatibleSearch a owl:Class ;
+    rdfs:subClassOf :Search .
+
+:SearchContext a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :SelectedCategory ;
+            owl:onProperty :hasSearchCategory ],
+        :Search .
+
+:categorizedBy a owl:ObjectProperty ;
+    rdfs:range :Category ;
+    owl:inverseOf :categorizes .
+
+:hasSubcategory a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain :Category ;
+    rdfs:range :Category ;
+    rdfs:subPropertyOf :enablesCategory ;
+    owl:inverseOf :hasSupercategory .
+
+pizza:Pizza a owl:Class ;
+    rdfs:subClassOf :Document .
+
+pizza:PizzaBase a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:PizzaKind a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:PizzaTopping a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:Spiciness a owl:Class ;
+    rdfs:subClassOf :Category .
+
+:Classification a owl:Class .
+
+:EnabledCategory a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :CandidateDocument ;
+            owl:onProperty :categorizes ],
+        :Category .
+
+:SelectedCategory a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :CandidateDocument ;
+            owl:onProperty :categorizes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom :EnabledCategory ;
+            owl:onProperty :enablesCategory ],
+        :Category .
+
+:hasSupercategory a owl:ObjectProperty .
+
+:isMemberOf a owl:ObjectProperty .
+
+:CandidateDocument a owl:Class ;
+    rdfs:subClassOf :Document .
+
+:Search a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :hasSearchCategory ;
+            owl:someValuesFrom :Category ] .
+
+:enablesCategory a owl:ObjectProperty ;
+    rdfs:domain :Category ;
+    rdfs:range :Category .
+
+:hasSearchCategory a owl:ObjectProperty ;
+    rdfs:range :Category .
+
+:Document a owl:Class .
+
+:categorizes a owl:ObjectProperty .
+
+:Category a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :isMemberOf ;
+            owl:someValuesFrom :Classification ] .
+

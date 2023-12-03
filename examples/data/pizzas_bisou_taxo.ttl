@@ -48,12 +48,14 @@ pizza:_herb pizza:has_subcategory pizza:_basil,
 
 pizza:_meat pizza:has_subcategory pizza:_bresaola,
         pizza:_ham,
-        pizza:_jambonDeParisWithBlackTruffle,
-        pizza:_jambonDeParisWithHerbs,
         pizza:_mortadella,
         pizza:_parmaHam,
         pizza:_speck,
         pizza:_spianataPiccante .
+
+pizza:_ham pizza:has_subcategory pizza:_jambonDeParisWithBlackTruffle,
+        pizza:_jambonDeParisWithHerbs .
+
 
 pizza:_meatyPizza pizza:has_subcategory pizza:_porkPizza .
 

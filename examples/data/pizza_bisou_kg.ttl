@@ -1,0 +1,456 @@
+@prefix : <http://www.msesboue.org/o/ir-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology .
+
+:IncompatibleDocument a owl:Class ;
+    rdfs:subClassOf :Document .
+
+:IncompatibleSearch a owl:Class ;
+    rdfs:subClassOf :Search .
+
+:SearchContext a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :SelectedCategory ;
+            owl:onProperty :hasSearchCategory ],
+        :Search .
+
+pizza:Spiciness a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:_bambino a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_tomatoBase .
+
+pizza:_biancaCastafiore a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_ricottaCreamBase ;
+    pizza:has_kind pizza:_goatCheesePizza,
+        pizza:_vegetarianPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_goatCheese,
+        pizza:_honey,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_spinach,
+        pizza:_walnut .
+
+pizza:_burraTadah a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_tomatoBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_cherryTomato,
+        pizza:_mozzaDiBurrata,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmaHam,
+        pizza:_parmesan,
+        pizza:_rocket .
+
+pizza:_godSaveTheKing a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_tomatoBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_carpaccioChampignonDeParis,
+        pizza:_jambonDeParisWithHerbs,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_olive .
+
+pizza:_hotStuff40 a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_tomatoSauceAlaNdujaBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_spiciness pizza:_medium ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_olive,
+        pizza:_oliveOil,
+        pizza:_spianataPiccante,
+        pizza:_sweetPepperDrop,
+        pizza:_tarragon .
+
+pizza:_laVieEnRose a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_oignonCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_basil,
+        pizza:_beetrootCoulis,
+        pizza:_blackPepper,
+        pizza:_fontinaChip,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_redOnion,
+        pizza:_speck .
+
+pizza:_leonardo a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_mustardCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_bresaola,
+        pizza:_fontina,
+        pizza:_leek,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_parsley,
+        pizza:_pecorino,
+        pizza:_speck .
+
+pizza:_margherita20 a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_tomatoBase ;
+    pizza:has_kind pizza:_vegetarianPizza ;
+    pizza:has_topping pizza:_basil,
+        pizza:_cherryTomato,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmesan .
+
+pizza:_pizzaBase a pizza:PizzaBase,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_creamBase,
+        pizza:_tomatoBase .
+
+pizza:_pizzaKind a pizza:PizzaKind,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_cheesyPizza,
+        pizza:_meatyPizza,
+        pizza:_vegetarianPizza .
+
+pizza:_pizzaSpiciness a pizza:PizzaSpiciness,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_hot,
+        pizza:_medium,
+        pizza:_mild .
+
+pizza:_pizzaTopping a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_cheese,
+        pizza:_condiment,
+        pizza:_herb,
+        pizza:_meat,
+        pizza:_oliveOil,
+        pizza:_roastedPistachio,
+        pizza:_sauce,
+        pizza:_vegetable,
+        pizza:_walnut .
+
+pizza:_pizzaToppings a pizza:PizzaTopping .
+
+pizza:_quatroFromaggi a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_creamBase ;
+    pizza:has_kind pizza:_vegetarianPizza ;
+    pizza:has_topping pizza:_basil,
+        pizza:_blackPepper,
+        pizza:_gorgonzola,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmesan,
+        pizza:_smokedScarmoza .
+
+pizza:_tartufo a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_blackTruffleCreamBase ;
+    pizza:has_kind pizza:_goatCheesePizza,
+        pizza:_porkPizza ;
+    pizza:has_topping pizza:_champignonDeParis,
+        pizza:_jambonDeParisWithBlackTruffle,
+        pizza:_jambonDeParisWithHerbs,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_parmesan,
+        pizza:_rocket .
+
+pizza:_zucchero a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_onionSquashCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackGarlic,
+        pizza:_blackPepper,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_scallion,
+        pizza:_speck,
+        pizza:_walnut .
+
+pizza:has_base a owl:ObjectProperty ;
+    rdfs:subPropertyOf :categorizedBy .
+
+pizza:has_kind a owl:ObjectProperty ;
+    rdfs:subPropertyOf :categorizedBy .
+
+pizza:has_spiciness a owl:ObjectProperty ;
+    rdfs:subPropertyOf :categorizedBy .
+
+pizza:has_subcategory a owl:ObjectProperty ;
+    owl:equivalentProperty :hasSubcategory .
+
+pizza:has_topping a owl:ObjectProperty .
+
+:Classification a owl:Class .
+
+:EnabledCategory a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :CandidateDocument ;
+            owl:onProperty :categorizes ],
+        :Category .
+
+:SelectedCategory a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom :CandidateDocument ;
+            owl:onProperty :categorizes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom :EnabledCategory ;
+            owl:onProperty :enablesCategory ],
+        :Category .
+
+:hasSubcategory a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain :Category ;
+    rdfs:range :Category ;
+    rdfs:subPropertyOf :enablesCategory ;
+    owl:inverseOf :hasSupercategory .
+
+:hasSupercategory a owl:ObjectProperty .
+
+:isMemberOf a owl:ObjectProperty .
+
+pizza:PizzaTopping a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:_cheese a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_fontina,
+        pizza:_gorgonzola,
+        pizza:_mozzarella,
+        pizza:_parmesan,
+        pizza:_pecorino,
+        pizza:_smokedScarmoza .
+
+pizza:_cheesyPizza a pizza:PizzaKind,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_goatCheesePizza .
+
+pizza:_condiment a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_blackGarlic,
+        pizza:_blackPepper .
+
+pizza:_goatCheese a owl:NamedIndividual .
+
+pizza:_ham a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_jambonDeParisWithBlackTruffle,
+        pizza:_jambonDeParisWithHerbs .
+
+pizza:_herb a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_basil,
+        pizza:_parsley,
+        pizza:_scallion,
+        pizza:_tarragon .
+
+pizza:_hot a pizza:PizzaSpiciness,
+        owl:NamedIndividual .
+
+pizza:_meat a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_bresaola,
+        pizza:_ham,
+        pizza:_mortadella,
+        pizza:_parmaHam,
+        pizza:_speck,
+        pizza:_spianataPiccante .
+
+pizza:_meatyPizza a pizza:PizzaKind,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_porkPizza .
+
+pizza:_mild a pizza:PizzaSpiciness,
+        owl:NamedIndividual .
+
+pizza:_mozzarella a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_mozzaDiBurrata,
+        pizza:_mozzaFiorDiLatte .
+
+pizza:_mushroom a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_carpaccioChampignonDeParis,
+        pizza:_champignonDeParis .
+
+pizza:_onion a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_redOnion .
+
+pizza:_sauce a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_beetrootCoulis,
+        pizza:_honey,
+        pizza:_pistachioPesto,
+        pizza:_sweetPepperDrop .
+
+pizza:_tomato a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_cherryTomato .
+
+pizza:_vegetable a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_leek,
+        pizza:_mushroom,
+        pizza:_olive,
+        pizza:_onion,
+        pizza:_rocket,
+        pizza:_spinach,
+        pizza:_tomato .
+
+:CandidateDocument a owl:Class ;
+    rdfs:subClassOf :Document .
+
+:Search a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty :hasSearchCategory ;
+            owl:someValuesFrom :Category ] .
+
+:enablesCategory a owl:ObjectProperty ;
+    rdfs:domain :Category ;
+    rdfs:range :Category .
+
+:hasSearchCategory a owl:ObjectProperty ;
+    rdfs:range :Category .
+
+pizza:_beetrootCoulis a owl:NamedIndividual .
+
+pizza:_blackGarlic a owl:NamedIndividual .
+
+pizza:_blackTruffleCreamBase a pizza:PizzaBase,
+        owl:NamedIndividual .
+
+pizza:_bresaola a owl:NamedIndividual .
+
+pizza:_carpaccioChampignonDeParis a owl:NamedIndividual .
+
+pizza:_champignonDeParis a owl:NamedIndividual .
+
+pizza:_creamBase a pizza:PizzaBase,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_blackTruffleCreamBase,
+        pizza:_mustardCreamBase,
+        pizza:_oignonCreamBase,
+        pizza:_onionSquashCreamBase,
+        pizza:_ricottaCreamBase .
+
+pizza:_fontina a owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_fontinaChip .
+
+pizza:_fontinaChip a owl:NamedIndividual .
+
+pizza:_gorgonzola a owl:NamedIndividual .
+
+pizza:_honey a owl:NamedIndividual .
+
+pizza:_jambonDeParisWithBlackTruffle a owl:NamedIndividual .
+
+pizza:_leek a owl:NamedIndividual .
+
+pizza:_medium a pizza:PizzaSpiciness,
+        owl:NamedIndividual .
+
+pizza:_mortadella a pizza:Pizza,
+        owl:NamedIndividual ;
+    pizza:has_base pizza:_ricottaCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_mortadella,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmesan,
+        pizza:_pistachioPesto,
+        pizza:_roastedPistachio .
+
+pizza:_mozzaDiBurrata a owl:NamedIndividual .
+
+pizza:_mustardCreamBase a pizza:PizzaBase,
+        owl:NamedIndividual .
+
+pizza:_oignonCreamBase a pizza:PizzaBase,
+        owl:NamedIndividual .
+
+pizza:_onionSquashCreamBase a pizza:PizzaBase,
+        owl:NamedIndividual .
+
+pizza:_parmaHam a owl:NamedIndividual .
+
+pizza:_parsley a owl:NamedIndividual .
+
+pizza:_pecorino a owl:NamedIndividual .
+
+pizza:_pistachioPesto a owl:NamedIndividual .
+
+pizza:_redOnion a owl:NamedIndividual .
+
+pizza:_roastedPistachio a owl:NamedIndividual .
+
+pizza:_scallion a owl:NamedIndividual .
+
+pizza:_smokedScarmoza a owl:NamedIndividual .
+
+pizza:_spianataPiccante a owl:NamedIndividual .
+
+pizza:_spinach a owl:NamedIndividual .
+
+pizza:_sweetPepperDrop a owl:NamedIndividual .
+
+pizza:_tarragon a owl:NamedIndividual .
+
+pizza:_tomatoSauceAlaNdujaBase a pizza:PizzaBase,
+        owl:NamedIndividual .
+
+:Document a owl:Class .
+
+:categorizedBy a owl:ObjectProperty ;
+    rdfs:range :Category ;
+    owl:inverseOf :categorizes .
+
+:categorizes a owl:ObjectProperty .
+
+pizza:_cherryTomato a owl:NamedIndividual .
+
+pizza:_goatCheesePizza a pizza:PizzaKind,
+        owl:NamedIndividual .
+
+pizza:_jambonDeParisWithHerbs a owl:NamedIndividual .
+
+pizza:_olive a owl:NamedIndividual .
+
+pizza:_ricottaCreamBase a pizza:PizzaBase,
+        owl:NamedIndividual .
+
+pizza:_rocket a owl:NamedIndividual .
+
+pizza:_walnut a owl:NamedIndividual .
+
+pizza:_basil a owl:NamedIndividual .
+
+pizza:_speck a owl:NamedIndividual .
+
+pizza:_vegetarianPizza a pizza:PizzaKind,
+        owl:NamedIndividual .
+
+pizza:_tomatoBase a pizza:PizzaBase,
+        owl:NamedIndividual ;
+    pizza:has_subcategory pizza:_tomatoSauceAlaNdujaBase .
+
+pizza:PizzaKind a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:_parmesan a owl:NamedIndividual .
+
+pizza:_oliveOil a owl:NamedIndividual .
+
+pizza:PizzaBase a owl:Class ;
+    rdfs:subClassOf :Category .
+
+pizza:_blackPepper a owl:NamedIndividual .
+
+pizza:_porkPizza a pizza:PizzaKind,
+        owl:NamedIndividual .
+
+pizza:Pizza a owl:Class ;
+    rdfs:subClassOf :Document .
+
+pizza:_mozzaFiorDiLatte a owl:NamedIndividual .
+
+:Category a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :isMemberOf ;
+            owl:someValuesFrom :Classification ] .
+

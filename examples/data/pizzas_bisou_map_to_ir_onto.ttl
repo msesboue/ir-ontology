@@ -3,15 +3,6 @@
 @prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-ir-onto:has_base rdfs:subPropertyOf ir-onto:categorizedBy .
-
-ir-onto:has_kind rdfs:subPropertyOf ir-onto:categorizedBy .
-
-ir-onto:has_spiciness rdfs:subPropertyOf ir-onto:categorizedBy .
-
-pizza:Spiciness a owl:Class ;
-    rdfs:subClassOf ir-onto:Category .
-
 pizza:_bambino a pizza:Pizza,
         owl:NamedIndividual .
 
@@ -203,29 +194,17 @@ pizza:_walnut a owl:NamedIndividual .
 pizza:_zucchero a pizza:Pizza,
         owl:NamedIndividual .
 
-pizza:has_base a owl:ObjectProperty .
+pizza:has_base a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
-pizza:has_kind a owl:ObjectProperty .
+pizza:has_kind a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
-pizza:has_spiciness a owl:ObjectProperty .
+pizza:has_spiciness a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
 pizza:has_subcategory a owl:ObjectProperty ;
     owl:equivalentProperty ir-onto:hasSubcategory .
 
 pizza:has_topping a owl:ObjectProperty .
-
-ir-onto:hasSubcategory a owl:TransitiveProperty ;
-    rdfs:subPropertyOf ir-onto:enablesCategory .
-
-pizza:PizzaTopping a owl:Class ;
-    rdfs:subClassOf ir-onto:Category .
-
-pizza:PizzaKind a owl:Class ;
-    rdfs:subClassOf ir-onto:Category .
-
-pizza:PizzaBase a owl:Class ;
-    rdfs:subClassOf ir-onto:Category .
-
-pizza:Pizza a owl:Class ;
-    rdfs:subClassOf ir-onto:Document .
 
