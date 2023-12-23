@@ -54,7 +54,8 @@ pizza:_meat pizza:has_subcategory pizza:_bresaola,
         pizza:_spianataPiccante .
 
 pizza:_ham pizza:has_subcategory pizza:_jambonDeParisWithBlackTruffle,
-        pizza:_jambonDeParisWithHerbs .
+        pizza:_jambonDeParisWithHerbs, 
+        pizza:_rostelloHamWithHerbs .
 
 
 pizza:_meatyPizza pizza:has_subcategory pizza:_porkPizza .

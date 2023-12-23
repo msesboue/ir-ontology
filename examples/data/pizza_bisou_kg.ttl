@@ -1,28 +1,31 @@
-@prefix : <http://www.msesboue.org/o/ir-ontology#> .
+@prefix ir-onto: <http://www.msesboue.org/o/ir-ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology .
+<http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology ;
+    owl:versionIRI <http://www.msesboue.org/o/information-retrieval-ontology/1.0.0> .
 
-:IncompatibleDocument a owl:Class ;
-    rdfs:subClassOf :Document .
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory> a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:hasSubcategory .
 
-:IncompatibleSearch a owl:Class ;
-    rdfs:subClassOf :Search .
+ir-onto:IncompatibleSearch a owl:Class ;
+    rdfs:subClassOf ir-onto:Search .
 
-:SearchContext a owl:Class ;
+ir-onto:SearchContext a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :SelectedCategory ;
-            owl:onProperty :hasSearchCategory ],
-        :Search .
+            owl:allValuesFrom ir-onto:SelectedCategory ;
+            owl:onProperty ir-onto:hasSearchCategory ],
+        ir-onto:Search .
 
 pizza:Spiciness a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:_bambino a pizza:Pizza,
         owl:NamedIndividual ;
-    pizza:has_base pizza:_tomatoBase .
+    pizza:has_base pizza:_tomatoBase ;
+    pizza:has_topping pizza:_mozzaFiorDiLatte,
+        pizza:_rostelloHamWithHerbs .
 
 pizza:_biancaCastafiore a pizza:Pizza,
         owl:NamedIndividual ;
@@ -173,49 +176,30 @@ pizza:_zucchero a pizza:Pizza,
         pizza:_walnut .
 
 pizza:has_base a owl:ObjectProperty ;
-    rdfs:subPropertyOf :categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
 pizza:has_kind a owl:ObjectProperty ;
-    rdfs:subPropertyOf :categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
 pizza:has_spiciness a owl:ObjectProperty ;
-    rdfs:subPropertyOf :categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
 pizza:has_subcategory a owl:ObjectProperty ;
-    owl:equivalentProperty :hasSubcategory .
+    owl:equivalentProperty ir-onto:hasSubcategory .
 
-pizza:has_topping a owl:ObjectProperty .
+pizza:has_topping a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
-:Classification a owl:Class .
+ir-onto:CandidateDocument a owl:Class ;
+    rdfs:subClassOf ir-onto:Document .
 
-:EnabledCategory a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :CandidateDocument ;
-            owl:onProperty :categorizes ],
-        :Category .
+ir-onto:EnabledCategory a owl:Class ;
+    rdfs:subClassOf ir-onto:Category .
 
-:SelectedCategory a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :CandidateDocument ;
-            owl:onProperty :categorizes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom :EnabledCategory ;
-            owl:onProperty :enablesCategory ],
-        :Category .
-
-:hasSubcategory a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:domain :Category ;
-    rdfs:range :Category ;
-    rdfs:subPropertyOf :enablesCategory ;
-    owl:inverseOf :hasSupercategory .
-
-:hasSupercategory a owl:ObjectProperty .
-
-:isMemberOf a owl:ObjectProperty .
+ir-onto:hasSupercategory a owl:ObjectProperty .
 
 pizza:PizzaTopping a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:_cheese a owl:NamedIndividual ;
     pizza:has_subcategory pizza:_fontina,
@@ -237,7 +221,8 @@ pizza:_goatCheese a owl:NamedIndividual .
 
 pizza:_ham a owl:NamedIndividual ;
     pizza:has_subcategory pizza:_jambonDeParisWithBlackTruffle,
-        pizza:_jambonDeParisWithHerbs .
+        pizza:_jambonDeParisWithHerbs,
+        pizza:_rostelloHamWithHerbs .
 
 pizza:_herb a owl:NamedIndividual ;
     pizza:has_subcategory pizza:_basil,
@@ -292,20 +277,33 @@ pizza:_vegetable a owl:NamedIndividual ;
         pizza:_spinach,
         pizza:_tomato .
 
-:CandidateDocument a owl:Class ;
-    rdfs:subClassOf :Document .
+ir-onto:Document a owl:Class .
 
-:Search a owl:Class ;
+ir-onto:Search a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty :hasSearchCategory ;
-            owl:someValuesFrom :Category ] .
+            owl:onProperty ir-onto:hasSearchCategory ;
+            owl:someValuesFrom ir-onto:Category ] .
 
-:enablesCategory a owl:ObjectProperty ;
-    rdfs:domain :Category ;
-    rdfs:range :Category .
+ir-onto:SelectedCategory a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ir-onto:CandidateDocument ;
+            owl:onProperty ir-onto:categorizes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ir-onto:EnabledCategory ;
+            owl:onProperty ir-onto:enablesCategory ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ir-onto:SelectedCategory ;
+            owl:onProperty ir-onto:hasSubcategory ],
+        ir-onto:Category .
 
-:hasSearchCategory a owl:ObjectProperty ;
-    rdfs:range :Category .
+ir-onto:categorizes a owl:ObjectProperty .
+
+ir-onto:enablesCategory a owl:ObjectProperty ;
+    rdfs:domain ir-onto:Category ;
+    rdfs:range ir-onto:Category .
+
+ir-onto:hasSearchCategory a owl:ObjectProperty ;
+    rdfs:range ir-onto:Category .
 
 pizza:_beetrootCoulis a owl:NamedIndividual .
 
@@ -379,6 +377,8 @@ pizza:_redOnion a owl:NamedIndividual .
 
 pizza:_roastedPistachio a owl:NamedIndividual .
 
+pizza:_rostelloHamWithHerbs a owl:NamedIndividual .
+
 pizza:_scallion a owl:NamedIndividual .
 
 pizza:_smokedScarmoza a owl:NamedIndividual .
@@ -394,13 +394,12 @@ pizza:_tarragon a owl:NamedIndividual .
 pizza:_tomatoSauceAlaNdujaBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-:Document a owl:Class .
-
-:categorizedBy a owl:ObjectProperty ;
-    rdfs:range :Category ;
-    owl:inverseOf :categorizes .
-
-:categorizes a owl:ObjectProperty .
+ir-onto:hasSubcategory a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain ir-onto:Category ;
+    rdfs:range ir-onto:Category ;
+    rdfs:subPropertyOf ir-onto:enablesCategory ;
+    owl:inverseOf ir-onto:hasSupercategory .
 
 pizza:_cherryTomato a owl:NamedIndividual .
 
@@ -418,6 +417,10 @@ pizza:_rocket a owl:NamedIndividual .
 
 pizza:_walnut a owl:NamedIndividual .
 
+ir-onto:categorizedBy a owl:ObjectProperty ;
+    rdfs:range ir-onto:Category ;
+    owl:inverseOf ir-onto:categorizes .
+
 pizza:_basil a owl:NamedIndividual .
 
 pizza:_speck a owl:NamedIndividual .
@@ -430,14 +433,14 @@ pizza:_tomatoBase a pizza:PizzaBase,
     pizza:has_subcategory pizza:_tomatoSauceAlaNdujaBase .
 
 pizza:PizzaKind a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:_parmesan a owl:NamedIndividual .
 
 pizza:_oliveOil a owl:NamedIndividual .
 
 pizza:PizzaBase a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:_blackPepper a owl:NamedIndividual .
 
@@ -445,12 +448,9 @@ pizza:_porkPizza a pizza:PizzaKind,
         owl:NamedIndividual .
 
 pizza:Pizza a owl:Class ;
-    rdfs:subClassOf :Document .
+    rdfs:subClassOf ir-onto:Document .
+
+ir-onto:Category a owl:Class .
 
 pizza:_mozzaFiorDiLatte a owl:NamedIndividual .
-
-:Category a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :isMemberOf ;
-            owl:someValuesFrom :Classification ] .
 

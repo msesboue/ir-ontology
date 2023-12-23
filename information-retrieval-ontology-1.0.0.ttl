@@ -6,15 +6,16 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://www.msesboue.org/o/ir-ontology#> .
 
-<http://www.msesboue.org/o/information-retrieval-ontology> rdf:type owl:Ontology .
+<http://www.msesboue.org/o/information-retrieval-ontology> rdf:type owl:Ontology ;
+                                                            owl:versionIRI <http://www.msesboue.org/o/information-retrieval-ontology/1.0.0> .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.msesboue.org/o/ir-ontology#hasSearchCategory
-:hasSearchCategory rdf:type owl:ObjectProperty ;
-                                                                 rdfs:range :Category .
+###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf :hasSubcategory .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#categorizedBy
@@ -33,9 +34,16 @@
                  rdfs:range :Category .
 
 
+###  http://www.msesboue.org/o/ir-ontology#hasSearchCategory
+:hasSearchCategory rdf:type owl:ObjectProperty ;
+                   rdfs:range :Category .
+
+
 ###  http://www.msesboue.org/o/ir-ontology#hasSubcategory
 :hasSubcategory rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :enablesCategory ;
                 owl:inverseOf :hasSupercategory ;
+                rdf:type owl:TransitiveProperty ;
                 rdfs:domain :Category ;
                 rdfs:range :Category .
 
@@ -44,26 +52,9 @@
 :hasSupercategory rdf:type owl:ObjectProperty .
 
 
-###  http://www.msesboue.org/o/ir-ontology#isMemberOf
-:isMemberOf rdf:type owl:ObjectProperty .
-
-
 #################################################################
 #    Classes
 #################################################################
-
-###  http://www.msesboue.org/o/ir-ontology#IncompatibleSearch
-:IncompatibleSearch rdf:type owl:Class ;
-                                                                  rdfs:subClassOf :Search .
-
-
-###  http://www.msesboue.org/o/ir-ontology#Search
-:Search rdf:type owl:Class ;
-                                                      owl:equivalentClass [ rdf:type owl:Restriction ;
-                                                                            owl:onProperty :hasSearchCategory ;
-                                                                            owl:someValuesFrom :Category
-                                                                          ] .
-
 
 ###  http://www.msesboue.org/o/ir-ontology#CandidateDocument
 :CandidateDocument rdf:type owl:Class ;
@@ -71,15 +62,7 @@
 
 
 ###  http://www.msesboue.org/o/ir-ontology#Category
-:Category rdf:type owl:Class ;
-          rdfs:subClassOf [ rdf:type owl:Restriction ;
-                            owl:onProperty :isMemberOf ;
-                            owl:someValuesFrom :Classification
-                          ] .
-
-
-###  http://www.msesboue.org/o/ir-ontology#Classification
-:Classification rdf:type owl:Class .
+:Category rdf:type owl:Class .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#Document
@@ -88,16 +71,20 @@
 
 ###  http://www.msesboue.org/o/ir-ontology#EnabledCategory
 :EnabledCategory rdf:type owl:Class ;
-                 rdfs:subClassOf :Category ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :categorizes ;
-                                   owl:allValuesFrom :CandidateDocument
-                                 ] .
+                 rdfs:subClassOf :Category .
 
 
-###  http://www.msesboue.org/o/ir-ontology#IncompatibleDocument
-:IncompatibleDocument rdf:type owl:Class ;
-                      rdfs:subClassOf :Document .
+###  http://www.msesboue.org/o/ir-ontology#IncompatibleSearch
+:IncompatibleSearch rdf:type owl:Class ;
+                    rdfs:subClassOf :Search .
+
+
+###  http://www.msesboue.org/o/ir-ontology#Search
+:Search rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSearchCategory ;
+                              owl:someValuesFrom :Category
+                            ] .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#SearchContext
@@ -119,6 +106,10 @@
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :enablesCategory ;
                                     owl:allValuesFrom :EnabledCategory
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasSubcategory ;
+                                    owl:allValuesFrom :SelectedCategory
                                   ] .
 
 

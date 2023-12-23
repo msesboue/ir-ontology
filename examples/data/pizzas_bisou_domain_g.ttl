@@ -1,90 +1,84 @@
-@prefix : <http://www.msesboue.org/o/ir-ontology#> .
+@prefix ir-onto: <http://www.msesboue.org/o/ir-ontology#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology .
+<http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology ;
+    owl:versionIRI <http://www.msesboue.org/o/information-retrieval-ontology/1.0.0> .
 
-:IncompatibleDocument a owl:Class ;
-    rdfs:subClassOf :Document .
+<http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory> a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:hasSubcategory .
 
-:IncompatibleSearch a owl:Class ;
-    rdfs:subClassOf :Search .
+ir-onto:IncompatibleSearch a owl:Class ;
+    rdfs:subClassOf ir-onto:Search .
 
-:SearchContext a owl:Class ;
+ir-onto:SearchContext a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :SelectedCategory ;
-            owl:onProperty :hasSearchCategory ],
-        :Search .
+            owl:allValuesFrom ir-onto:SelectedCategory ;
+            owl:onProperty ir-onto:hasSearchCategory ],
+        ir-onto:Search .
 
-:categorizedBy a owl:ObjectProperty ;
-    rdfs:range :Category ;
-    owl:inverseOf :categorizes .
-
-:hasSubcategory a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:domain :Category ;
-    rdfs:range :Category ;
-    rdfs:subPropertyOf :enablesCategory ;
-    owl:inverseOf :hasSupercategory .
+ir-onto:categorizedBy a owl:ObjectProperty ;
+    rdfs:range ir-onto:Category ;
+    owl:inverseOf ir-onto:categorizes .
 
 pizza:Pizza a owl:Class ;
-    rdfs:subClassOf :Document .
+    rdfs:subClassOf ir-onto:Document .
 
 pizza:PizzaBase a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:PizzaKind a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:PizzaTopping a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
 pizza:Spiciness a owl:Class ;
-    rdfs:subClassOf :Category .
+    rdfs:subClassOf ir-onto:Category .
 
-:Classification a owl:Class .
+ir-onto:CandidateDocument a owl:Class ;
+    rdfs:subClassOf ir-onto:Document .
 
-:EnabledCategory a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :CandidateDocument ;
-            owl:onProperty :categorizes ],
-        :Category .
+ir-onto:EnabledCategory a owl:Class ;
+    rdfs:subClassOf ir-onto:Category .
 
-:SelectedCategory a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :CandidateDocument ;
-            owl:onProperty :categorizes ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom :EnabledCategory ;
-            owl:onProperty :enablesCategory ],
-        :Category .
+ir-onto:hasSupercategory a owl:ObjectProperty .
 
-:hasSupercategory a owl:ObjectProperty .
+ir-onto:Document a owl:Class .
 
-:isMemberOf a owl:ObjectProperty .
-
-:CandidateDocument a owl:Class ;
-    rdfs:subClassOf :Document .
-
-:Search a owl:Class ;
+ir-onto:Search a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty :hasSearchCategory ;
-            owl:someValuesFrom :Category ] .
+            owl:onProperty ir-onto:hasSearchCategory ;
+            owl:someValuesFrom ir-onto:Category ] .
 
-:enablesCategory a owl:ObjectProperty ;
-    rdfs:domain :Category ;
-    rdfs:range :Category .
-
-:hasSearchCategory a owl:ObjectProperty ;
-    rdfs:range :Category .
-
-:Document a owl:Class .
-
-:categorizes a owl:ObjectProperty .
-
-:Category a owl:Class ;
+ir-onto:SelectedCategory a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :isMemberOf ;
-            owl:someValuesFrom :Classification ] .
+            owl:allValuesFrom ir-onto:CandidateDocument ;
+            owl:onProperty ir-onto:categorizes ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ir-onto:EnabledCategory ;
+            owl:onProperty ir-onto:enablesCategory ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ir-onto:SelectedCategory ;
+            owl:onProperty ir-onto:hasSubcategory ],
+        ir-onto:Category .
+
+ir-onto:categorizes a owl:ObjectProperty .
+
+ir-onto:enablesCategory a owl:ObjectProperty ;
+    rdfs:domain ir-onto:Category ;
+    rdfs:range ir-onto:Category .
+
+ir-onto:hasSearchCategory a owl:ObjectProperty ;
+    rdfs:range ir-onto:Category .
+
+ir-onto:hasSubcategory a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain ir-onto:Category ;
+    rdfs:range ir-onto:Category ;
+    rdfs:subPropertyOf ir-onto:enablesCategory ;
+    owl:inverseOf ir-onto:hasSupercategory .
+
+ir-onto:Category a owl:Class .
 

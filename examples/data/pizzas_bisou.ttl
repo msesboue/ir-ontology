@@ -1,6 +1,8 @@
 @prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
 
-pizza:_bambino pizza:has_base pizza:_tomatoBase .
+pizza:_bambino pizza:has_base pizza:_tomatoBase ;
+    pizza:has_topping pizza:_mozzaFiorDiLatte,
+    pizza:_rostelloHamWithHerbs .
 
 pizza:_biancaCastafiore pizza:has_base pizza:_ricottaCreamBase ;
     pizza:has_kind pizza:_goatCheesePizza,

@@ -157,6 +157,8 @@ pizza:_roastedPistachio a owl:NamedIndividual .
 
 pizza:_rocket a owl:NamedIndividual .
 
+pizza:_rostelloHamWithHerbs a owl:NamedIndividual .
+
 pizza:_sauce a owl:NamedIndividual .
 
 pizza:_scallion a owl:NamedIndividual .
@@ -206,5 +208,6 @@ pizza:has_spiciness a owl:ObjectProperty ;
 pizza:has_subcategory a owl:ObjectProperty ;
     owl:equivalentProperty ir-onto:hasSubcategory .
 
-pizza:has_topping a owl:ObjectProperty .
+pizza:has_topping a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:categorizedBy .
 
