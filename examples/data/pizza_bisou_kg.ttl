@@ -6,9 +6,6 @@
 <http://www.msesboue.org/o/information-retrieval-ontology> a owl:Ontology ;
     owl:versionIRI <http://www.msesboue.org/o/information-retrieval-ontology/1.0.0> .
 
-<http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory> a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:hasSubcategory .
-
 ir-onto:IncompatibleSearch a owl:Class ;
     rdfs:subClassOf ir-onto:Search .
 
@@ -176,19 +173,19 @@ pizza:_zucchero a pizza:Pizza,
         pizza:_walnut .
 
 pizza:has_base a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 pizza:has_kind a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 pizza:has_spiciness a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 pizza:has_subcategory a owl:ObjectProperty ;
-    owl:equivalentProperty ir-onto:hasSubcategory .
+    owl:equivalentProperty ir-onto:hasDirectSubcategory .
 
 pizza:has_topping a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 ir-onto:CandidateDocument a owl:Class ;
     rdfs:subClassOf ir-onto:Document .
@@ -196,7 +193,8 @@ ir-onto:CandidateDocument a owl:Class ;
 ir-onto:EnabledCategory a owl:Class ;
     rdfs:subClassOf ir-onto:Category .
 
-ir-onto:hasSupercategory a owl:ObjectProperty .
+ir-onto:hasDirectSubcategory a owl:ObjectProperty ;
+    rdfs:subPropertyOf ir-onto:hasSubcategory .
 
 pizza:PizzaTopping a owl:Class ;
     rdfs:subClassOf ir-onto:Category .
@@ -287,7 +285,7 @@ ir-onto:Search a owl:Class ;
 ir-onto:SelectedCategory a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom ir-onto:CandidateDocument ;
-            owl:onProperty ir-onto:categorizes ],
+            owl:onProperty ir-onto:categorises ],
         [ a owl:Restriction ;
             owl:allValuesFrom ir-onto:EnabledCategory ;
             owl:onProperty ir-onto:enablesCategory ],
@@ -296,7 +294,7 @@ ir-onto:SelectedCategory a owl:Class ;
             owl:onProperty ir-onto:hasSubcategory ],
         ir-onto:Category .
 
-ir-onto:categorizes a owl:ObjectProperty .
+ir-onto:categorises a owl:ObjectProperty .
 
 ir-onto:enablesCategory a owl:ObjectProperty ;
     rdfs:domain ir-onto:Category ;
@@ -304,6 +302,12 @@ ir-onto:enablesCategory a owl:ObjectProperty ;
 
 ir-onto:hasSearchCategory a owl:ObjectProperty ;
     rdfs:range ir-onto:Category .
+
+ir-onto:hasSubcategory a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:domain ir-onto:Category ;
+    rdfs:range ir-onto:Category ;
+    rdfs:subPropertyOf ir-onto:enablesCategory .
 
 pizza:_beetrootCoulis a owl:NamedIndividual .
 
@@ -394,13 +398,6 @@ pizza:_tarragon a owl:NamedIndividual .
 pizza:_tomatoSauceAlaNdujaBase a pizza:PizzaBase,
         owl:NamedIndividual .
 
-ir-onto:hasSubcategory a owl:ObjectProperty,
-        owl:TransitiveProperty ;
-    rdfs:domain ir-onto:Category ;
-    rdfs:range ir-onto:Category ;
-    rdfs:subPropertyOf ir-onto:enablesCategory ;
-    owl:inverseOf ir-onto:hasSupercategory .
-
 pizza:_cherryTomato a owl:NamedIndividual .
 
 pizza:_goatCheesePizza a pizza:PizzaKind,
@@ -417,9 +414,9 @@ pizza:_rocket a owl:NamedIndividual .
 
 pizza:_walnut a owl:NamedIndividual .
 
-ir-onto:categorizedBy a owl:ObjectProperty ;
+ir-onto:categorisedBy a owl:ObjectProperty ;
     rdfs:range ir-onto:Category ;
-    owl:inverseOf ir-onto:categorizes .
+    owl:inverseOf ir-onto:categorises .
 
 pizza:_basil a owl:NamedIndividual .
 

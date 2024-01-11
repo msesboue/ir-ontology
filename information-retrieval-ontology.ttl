@@ -13,25 +13,25 @@
 #    Object Properties
 #################################################################
 
-###  http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory
-<http://www.msesboue.org/o/ir-onto-pizza-demo#hasDirectSubcategory> rdf:type owl:ObjectProperty ;
-                                                                    rdfs:subPropertyOf :hasSubcategory .
-
-
-###  http://www.msesboue.org/o/ir-ontology#categorizedBy
-:categorizedBy rdf:type owl:ObjectProperty ;
-               owl:inverseOf :categorizes ;
+###  http://www.msesboue.org/o/ir-ontology#categorisedBy
+:categorisedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :categorises ;
                rdfs:range :Category .
 
 
-###  http://www.msesboue.org/o/ir-ontology#categorizes
-:categorizes rdf:type owl:ObjectProperty .
+###  http://www.msesboue.org/o/ir-ontology#categorises
+:categorises rdf:type owl:ObjectProperty .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#enablesCategory
 :enablesCategory rdf:type owl:ObjectProperty ;
                  rdfs:domain :Category ;
                  rdfs:range :Category .
+
+
+###  http://www.msesboue.org/o/ir-ontology#hasDirectSubcategory
+:hasDirectSubcategory rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :hasSubcategory .
 
 
 ###  http://www.msesboue.org/o/ir-ontology#hasSearchCategory
@@ -42,14 +42,9 @@
 ###  http://www.msesboue.org/o/ir-ontology#hasSubcategory
 :hasSubcategory rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf :enablesCategory ;
-                owl:inverseOf :hasSupercategory ;
                 rdf:type owl:TransitiveProperty ;
                 rdfs:domain :Category ;
                 rdfs:range :Category .
-
-
-###  http://www.msesboue.org/o/ir-ontology#hasSupercategory
-:hasSupercategory rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -100,7 +95,7 @@
 :SelectedCategory rdf:type owl:Class ;
                   rdfs:subClassOf :Category ,
                                   [ rdf:type owl:Restriction ;
-                                    owl:onProperty :categorizes ;
+                                    owl:onProperty :categorises ;
                                     owl:allValuesFrom :CandidateDocument
                                   ] ,
                                   [ rdf:type owl:Restriction ;

@@ -197,17 +197,17 @@ pizza:_zucchero a pizza:Pizza,
         owl:NamedIndividual .
 
 pizza:has_base a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 pizza:has_kind a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 pizza:has_spiciness a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
 pizza:has_subcategory a owl:ObjectProperty ;
-    owl:equivalentProperty ir-onto:hasSubcategory .
+    owl:equivalentProperty ir-onto:hasDirectSubcategory .
 
 pizza:has_topping a owl:ObjectProperty ;
-    rdfs:subPropertyOf ir-onto:categorizedBy .
+    rdfs:subPropertyOf ir-onto:categorisedBy .
 
