@@ -1,0 +1,198 @@
+@prefix pizza: <http://www.msesboue.org/o/pizza-data-demo/bisou#> .
+
+pizza:_bambino pizza:has_base pizza:_tomatoBase ;
+    pizza:has_topping pizza:_mozzaFiorDiLatte,
+        pizza:_rostelloHamWithHerbs .
+
+pizza:_biancaCastafiore pizza:has_base pizza:_ricottaCreamBase ;
+    pizza:has_kind pizza:_goatCheesePizza,
+        pizza:_vegetarianPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_goatCheese,
+        pizza:_honey,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_spinach,
+        pizza:_walnut .
+
+pizza:_burraTadah pizza:has_base pizza:_tomatoBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_cherryTomato,
+        pizza:_mozzaDiBurrata,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmaHam,
+        pizza:_parmesan,
+        pizza:_rocket .
+
+pizza:_godSaveTheKing pizza:has_base pizza:_tomatoBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_carpaccioChampignonDeParis,
+        pizza:_jambonDeParisWithHerbs,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_olive .
+
+pizza:_hotStuff40 pizza:has_base pizza:_tomatoSauceAlaNdujaBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_spiciness pizza:_medium ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_olive,
+        pizza:_oliveOil,
+        pizza:_spianataPiccante,
+        pizza:_sweetPepperDrop,
+        pizza:_tarragon .
+
+pizza:_laVieEnRose pizza:has_base pizza:_oignonCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_basil,
+        pizza:_beetrootCoulis,
+        pizza:_blackPepper,
+        pizza:_fontinaChip,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_redOnion,
+        pizza:_speck .
+
+pizza:_leonardo pizza:has_base pizza:_mustardCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_bresaola,
+        pizza:_fontina,
+        pizza:_leek,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_parsley,
+        pizza:_pecorino,
+        pizza:_speck .
+
+pizza:_margherita20 pizza:has_base pizza:_tomatoBase ;
+    pizza:has_kind pizza:_vegetarianPizza ;
+    pizza:has_topping pizza:_basil,
+        pizza:_cherryTomato,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmesan .
+
+pizza:_pizzaBase pizza:has_subcategory pizza:_creamBase,
+        pizza:_tomatoBase .
+
+pizza:_pizzaKind pizza:has_subcategory pizza:_cheesyPizza,
+        pizza:_meatyPizza,
+        pizza:_vegetarianPizza .
+
+pizza:_pizzaSpiciness pizza:has_subcategory pizza:_hot,
+        pizza:_medium,
+        pizza:_mild .
+
+pizza:_pizzaTopping pizza:has_subcategory pizza:_cheese,
+        pizza:_condiment,
+        pizza:_herb,
+        pizza:_meat,
+        pizza:_oliveOil,
+        pizza:_roastedPistachio,
+        pizza:_sauce,
+        pizza:_vegetable,
+        pizza:_walnut .
+
+pizza:_quatroFromaggi pizza:has_base pizza:_creamBase ;
+    pizza:has_kind pizza:_vegetarianPizza ;
+    pizza:has_topping pizza:_basil,
+        pizza:_blackPepper,
+        pizza:_gorgonzola,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmesan,
+        pizza:_smokedScarmoza .
+
+pizza:_tartufo pizza:has_base pizza:_blackTruffleCreamBase ;
+    pizza:has_kind pizza:_goatCheesePizza,
+        pizza:_porkPizza ;
+    pizza:has_topping pizza:_champignonDeParis,
+        pizza:_jambonDeParisWithBlackTruffle,
+        pizza:_jambonDeParisWithHerbs,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_parmesan,
+        pizza:_rocket .
+
+pizza:_zucchero pizza:has_base pizza:_onionSquashCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackGarlic,
+        pizza:_blackPepper,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_scallion,
+        pizza:_speck,
+        pizza:_walnut .
+
+pizza:_cheese pizza:has_subcategory pizza:_fontina,
+        pizza:_gorgonzola,
+        pizza:_mozzarella,
+        pizza:_parmesan,
+        pizza:_pecorino,
+        pizza:_smokedScarmoza .
+
+pizza:_cheesyPizza pizza:has_subcategory pizza:_goatCheesePizza .
+
+pizza:_condiment pizza:has_subcategory pizza:_blackGarlic,
+        pizza:_blackPepper .
+
+pizza:_ham pizza:has_subcategory pizza:_jambonDeParisWithBlackTruffle,
+        pizza:_jambonDeParisWithHerbs,
+        pizza:_rostelloHamWithHerbs .
+
+pizza:_herb pizza:has_subcategory pizza:_basil,
+        pizza:_parsley,
+        pizza:_scallion,
+        pizza:_tarragon .
+
+pizza:_meat pizza:has_subcategory pizza:_bresaola,
+        pizza:_ham,
+        pizza:_mortadella,
+        pizza:_parmaHam,
+        pizza:_speck,
+        pizza:_spianataPiccante .
+
+pizza:_meatyPizza pizza:has_subcategory pizza:_porkPizza .
+
+pizza:_mozzarella pizza:has_subcategory pizza:_mozzaDiBurrata,
+        pizza:_mozzaFiorDiLatte .
+
+pizza:_mushroom pizza:has_subcategory pizza:_carpaccioChampignonDeParis,
+        pizza:_champignonDeParis .
+
+pizza:_onion pizza:has_subcategory pizza:_redOnion .
+
+pizza:_sauce pizza:has_subcategory pizza:_beetrootCoulis,
+        pizza:_honey,
+        pizza:_pistachioPesto,
+        pizza:_sweetPepperDrop .
+
+pizza:_tomato pizza:has_subcategory pizza:_cherryTomato .
+
+pizza:_vegetable pizza:has_subcategory pizza:_leek,
+        pizza:_mushroom,
+        pizza:_olive,
+        pizza:_onion,
+        pizza:_rocket,
+        pizza:_spinach,
+        pizza:_tomato .
+
+pizza:_creamBase pizza:has_subcategory pizza:_blackTruffleCreamBase,
+        pizza:_mustardCreamBase,
+        pizza:_oignonCreamBase,
+        pizza:_onionSquashCreamBase,
+        pizza:_ricottaCreamBase .
+
+pizza:_fontina pizza:has_subcategory pizza:_fontinaChip .
+
+pizza:_mortadella pizza:has_base pizza:_ricottaCreamBase ;
+    pizza:has_kind pizza:_porkPizza ;
+    pizza:has_topping pizza:_blackPepper,
+        pizza:_mortadella,
+        pizza:_mozzaFiorDiLatte,
+        pizza:_oliveOil,
+        pizza:_parmesan,
+        pizza:_pistachioPesto,
+        pizza:_roastedPistachio .
+
+pizza:_tomatoBase pizza:has_subcategory pizza:_tomatoSauceAlaNdujaBase .
+
